@@ -1,1 +1,51 @@
+#include <stdio.h>
 
+int main()
+{
+    int size;
+
+    printf("배열 크기 입력: ");
+    scanf("%d", &size);
+
+    // 배열 크기가 2 미만이면 종료
+    if (size < 2)
+    {
+        printf("배열 크기는 2 이상이어야 합니다.\n");
+        return 0;
+    }
+
+    int arr[size];
+
+    // 배열 입력
+    printf("배열 값 입력:\n");
+    for (int i = 0; i < size; i++)
+    {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("중복 제거 결과: ");
+
+    // 중복 검사
+    for (int i = 0; i < size; i++)
+    {
+        int duplicate = 0;
+
+        // 이전 값들과 비교
+        for (int j = 0; j < i; j++)
+        {
+            if (arr[i] == arr[j])
+            {
+                duplicate = 1;
+                break;
+            }
+        }
+
+        // 처음 나온 값만 출력
+        if (duplicate == 0)
+        {
+            printf("%d ", arr[i]);
+        }
+    }
+
+    return 0;
+}
